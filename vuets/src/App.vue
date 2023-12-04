@@ -2,8 +2,8 @@
   <!-- <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/> -->
+  </nav> -->
+  <!-- <router-view/> -->
   <div id="app">
     <div class="header"></div>
     <div class="body">
@@ -11,11 +11,11 @@
         <leftTabs :data="menuList"/>
       </div>
       <div class="pageBody">
-        <!-- <nav>
+        <nav>
           <router-link to="/">Home</router-link> |
           <router-link to="/about">About</router-link>
         </nav>
-        <router-view/> -->
+        <!-- <router-view/> -->
       </div>
     </div>
   </div>
