@@ -6,10 +6,7 @@
       :index="item?.id"
     >
       <template #title>
-        <el-icon class="menu-icon" v-if="item?.icon">
-        <!-- 遍历icon -->
-          <component :is="item?.icon"></component>
-        </el-icon>
+        <img class="icon_img" v-if="item?.icon" :src="`@/assets/static/image/${item.icon}.png`" alt="">
         <span>{{ item?.label }}</span>
       </template>
     
@@ -19,40 +16,44 @@
 
     <!-- 没有下级 -->
     <el-menu-item v-else :index="item?.id">
-      <component :is="item?.icon" class="menu-icon"></component>
+      <!-- <component :is="item?.icon" class="menu-icon"></component> -->
       <router-link class="routerClass" :to="item?.path">{{ item?.label }}</router-link>
-      <template #title>{{ item?.label }}</template>
+      <template #title>
+        <img class="icon_img" v-if="item?.icon" :src="require(`@/assets/static/image/${item.icon}${selectedKey == item.id ? '_select' : ''}.png`)" alt="">
+        <span>{{ item?.label }}</span>
+      </template>
     </el-menu-item>
   </template>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import {
-  Document,
-  UserFilled,
-  Location,
-  Setting,
-  Odometer,
-  Edit,
-  Grid,
-  Menu as IconMenu,
-} from '@element-plus/icons-vue';
+
 export default defineComponent({
   name: 'MenuItem',
-  props: ['menuList'],
-  components: {
-    Location,
-    Setting,
-    IconMenu,
-    Document,
-    Odometer,
-    Edit,
-    Grid,
-    UserFilled,
-  },
+  // props: ['menuList'],
 })
 
+</script>
+<script lang="ts" setup>
+import { defineProps } from 'vue'
+interface MenuItem {
+  children?: MenuItem[];
+  id: string;
+  label: string;
+  icon: string;
+  path: string;
+}
+const props = defineProps({
+  menuList: {
+    type: Array as () => MenuItem[],
+    default: () => []
+  },
+  selectedKey: {
+    type: String,
+    default: ''
+  }
+});
 </script>
 
 <style lang="scss" scoped>
@@ -73,5 +74,9 @@ export default defineComponent({
 }
 .routerClass:hover {
   color: rgba(64, 158, 255, 0.7);
+}
+.icon_img {
+  width: 30px;
+  height: 30px;
 }
 </style>

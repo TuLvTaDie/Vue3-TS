@@ -6,8 +6,9 @@
         class="el-menu-vertical-demo"
         @open="handleOpen"
         @close="handleClose"
+        @select="handleSelect"
       >
-        <MenuItem :menuList="props.data"/>
+        <MenuItem :menuList="props.data" :selectedKey="selectedKey"/>
       </el-menu>
     </el-col>
   </el-row>
@@ -23,7 +24,7 @@ export default defineComponent({
 </script>
 
 <script lang="ts" setup>
-import { defineProps, PropType } from 'vue'
+import { defineProps, PropType, ref } from 'vue'
 export interface ColumnProps{
   id: any,
   path: any,
@@ -32,7 +33,7 @@ export interface ColumnProps{
   icon: any,
   url: any,
   router: any,
-  children: any
+  children: any,
 }
 const props = defineProps({
   data: {
@@ -41,11 +42,16 @@ const props = defineProps({
   }
 });
 const router = useRouter()
+const selectedKey = ref('')
 const handleOpen = (key: string, keyPath: string[]) => {
-  // console.log(key, keyPath)
+  console.log(key, keyPath)
 }
 const handleClose = (key: string, keyPath: string[]) => {
-  // console.log(key, keyPath)
+  console.log(key, keyPath)
+}
+const handleSelect = (key: string, keyPath: string[]) => {
+  selectedKey.value = key
+  console.log(key, keyPath)
 }
 </script>
 
