@@ -1,7 +1,11 @@
 <template>
   <div>
-    平台人才库
-    <svg-icon iconClass="png"></svg-icon>
+    展示ppt
+    <svg-icon iconClass="ppt"></svg-icon>
+    展示word
+    <svg-icon iconClass="docx"></svg-icon>
+    展示mp3
+    <svg-icon iconClass="mp3"></svg-icon>
   </div>
 </template>
 
