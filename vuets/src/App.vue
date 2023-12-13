@@ -15,7 +15,7 @@
           <router-link to="/">Home</router-link> |
           <router-link to="/about">About</router-link>
         </nav>
-        <!-- <router-view/> -->
+        <router-view/>
       </div>
     </div>
   </div>
@@ -32,11 +32,11 @@ export default defineComponent({
     let menuList: any = [
       {
         id: '1',
-        path: '/CityShow',
+        path: '/',
         name: '平台人才库',
         label: '平台人才库',
         icon: 'talentPool_icon',
-        url: '/CityShow',
+        url: '/talentPool',
         router: '',
         // children: [{
         //   id: '1-1',

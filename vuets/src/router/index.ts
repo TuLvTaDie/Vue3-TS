@@ -2,10 +2,15 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
 const routes: Array<RouteRecordRaw> = [
+  // {
+  //   path: '/',
+  //   name: 'home',
+  //   component: HomeView
+  // },
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'talentPool',
+    component: () => import('@/views/talentPool/talentPool_index.vue')
   },
   {
     path: '/about',
@@ -20,11 +25,7 @@ const routes: Array<RouteRecordRaw> = [
     name: 'test',
     component: () => import(/* webpackChunkName: "about" */ '../views/TestView.vue')
   },
-  {
-    path: '/talentPool',
-    name: 'talentPool',
-    component: () => import('@/views/talentPool/talentPool_index.vue')
-  }
+  
 ]
 
 const router = createRouter({
