@@ -6,7 +6,8 @@
       :index="item?.id"
     >
       <template #title>
-        <img class="icon_img" v-if="item?.icon" :src="`@/assets/static/image/${item.icon}.png`" alt="">
+        <!-- <img class="icon_img" v-if="item?.icon" :src="`@/assets/static/image/${item.icon}.png`" alt=""> -->
+        <svg-icon iconClass="talentPool" class="icon_color"></svg-icon>
         <span>{{ item?.label }}</span>
       </template>
     
@@ -19,7 +20,8 @@
       <!-- <component :is="item?.icon" class="menu-icon"></component> -->
       <router-link class="routerClass" :to="item?.path">{{ item?.label }}</router-link>
       <template #title>
-        <img class="icon_img" v-if="item?.icon" :src="require(`@/assets/static/image/${item.icon}${selectedKey == item.id ? '_select' : ''}.png`)" alt="">
+        <svg-icon iconClass="talentPool" class="icon_color"></svg-icon>
+        <!-- <img class="icon_img" v-if="item?.icon" :src="require(`@/assets/static/image/${item.icon}${selectedKey == item.id ? '_select' : ''}.png`)" alt=""> -->
         <span>{{ item?.label }}</span>
       </template>
     </el-menu-item>
@@ -66,7 +68,7 @@ const props = defineProps({
   height: 24px;
 }
 .routerClass {
-  width: 100%;
+  width: calc(100% - 40px);
   color: #000000;
   text-decoration: none;
   opacity: 0;
@@ -79,4 +81,5 @@ const props = defineProps({
   width: 30px;
   height: 30px;
 }
+
 </style>

@@ -6,6 +6,7 @@
     <svg-icon iconClass="docx"></svg-icon>
     展示mp3
     <svg-icon iconClass="mp3"></svg-icon>
+    <!-- <svg-icon iconClass="talentPool"></svg-icon> -->
   </div>
 </template>
 
