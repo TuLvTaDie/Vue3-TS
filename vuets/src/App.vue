@@ -11,10 +11,10 @@
         <leftTabs :data="menuList"/>
       </div>
       <div class="pageBody">
-        <nav>
+        <!-- <nav>
           <router-link to="/">Home</router-link> |
           <router-link to="/about">About</router-link>
-        </nav>
+        </nav> -->
         <router-view/>
       </div>
     </div>
@@ -62,28 +62,16 @@ export default defineComponent({
         id: '2',
         path: '/UserFilled',
         name: 'Edit',
-        label: '表单页',
+        label: '线索库数据',
         icon: 'Edit',
         url: '/UserFilled',
         children: [{
           id: '2-1',
-          path: '/about',
-          name: '基础表单',
-          label: '基础表单',
-          url: '/page2',
-          },{
-          id: '2-2',
-          path: '/about',
-          name: '分步表单',
-          label: '分步表单',
-          url: '/page2',
-        },{
-          id: '2-3',
-          path: '/about',
-          name: '高级表单',
-          label: '高级表单',
-          url: '/page2',
-        },],
+          path: '/myCustomer',
+          name: '客户管理',
+          label: '客户管理',
+          url: '',
+          }],
       },
       {
         id: '3',
