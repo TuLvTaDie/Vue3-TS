@@ -88,19 +88,19 @@ export default defineComponent({
           url: '/page1',
           children: [{
             id: '3-1-1',
-            path: '/test',
+            path: '/selectArticle',
             name: '搜索列表（文章）',
             label: '搜索列表（文章）',
             url: '/page1',
           },{
             id: '3-1-2',
-            path: '/about',
+            path: '/selectProject',
             name: '搜索列表（项目）',
             label: '搜索列表（项目）',
             url: '/page1',
           },{
             id: '3-1-3',
-            path: '/',
+            path: '/selectApp',
             name: '搜索列表（应用）',
             label: '搜索列表（应用）',
             url: '/page1',
@@ -114,14 +114,14 @@ export default defineComponent({
           children: [],
         },{
           id: '3-3',
-          path: '/about',
+          path: '/standard',
           name: '标准列表',
           label: '标准列表',
           url: '/page1',
           children: [],
         },{
           id: '3-4',
-          path: '/',
+          path: '/card',
           name: '卡片列表',
           label: '卡片列表',
           url: '/page1',
@@ -134,7 +134,7 @@ export default defineComponent({
     }
   },
   created() {
-    // testApiFun()
+    testApiFun()
   }
 })
 const testApiFun = async() => {

@@ -2,47 +2,43 @@
   <el-row class="tac">
     <el-col :span="24">
       <el-menu
-        default-active="2"
+        router
+        :default-active="activeMenu"
+        :default-openeds="openeds"
         class="el-menu-vertical-demo"
         @open="handleOpen"
         @close="handleClose"
         @select="handleSelect"
       >
-        <MenuItem :menuList="props.data" :selectedKey="selectedKey"/>
+        <MenuItem :menuList="props.data"/>
       </el-menu>
     </el-col>
   </el-row>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
-import { useRouter } from 'vue-router'
-import MenuItem from '@/components/common/MenuItem.vue'
-export default defineComponent({
-  name: 'leftTabs',
-})
-</script>
-
 <script lang="ts" setup>
-import { defineProps, PropType, ref } from 'vue'
-export interface ColumnProps{
-  id: any,
-  path: any,
-  name: any,
-  label: any,
-  icon: any,
-  url: any,
-  router: any,
-  children: any,
-}
+// import { ref } from 'vue'
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+import MenuItem from '@/components/common/MenuItem.vue'
+import type { PropType } from 'vue'
+import type { MenuItem as MenuItemType  } from '@/types/menu'
+
 const props = defineProps({
   data: {
-    type: Array as PropType<ColumnProps[]>,
+    type: Array as PropType<MenuItemType[]>,
     default: () => []
   }
 });
-const router = useRouter()
-const selectedKey = ref('')
+const route = useRoute()
+// 当前高亮
+const activeMenu = computed(() => route.path)
+// 自动展开父级
+const openeds = computed(() => {
+  const matched = route.matched
+  return matched.map(r => r.path)
+})
+// const selectedKey = ref('3-1')
 const handleOpen = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
 }
@@ -50,7 +46,7 @@ const handleClose = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
 }
 const handleSelect = (key: string, keyPath: string[]) => {
-  selectedKey.value = key
+  // selectedKey.value = key
   console.log(key, keyPath)
 }
 </script>

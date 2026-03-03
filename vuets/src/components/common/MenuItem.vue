@@ -6,7 +6,6 @@
       :index="item?.id"
     >
       <template #title>
-        <!-- <img class="icon_img" v-if="item?.icon" :src="`@/assets/static/image/${item.icon}.png`" alt=""> -->
         <svg-icon iconClass="talentPool" class="icon_color"></svg-icon>
         <span>{{ item?.label }}</span>
       </template>
@@ -16,12 +15,10 @@
     </el-sub-menu>
 
     <!-- 没有下级 -->
-    <el-menu-item v-else :index="item?.id">
-      <!-- <component :is="item?.icon" class="menu-icon"></component> -->
-      <router-link class="routerClass" :to="item?.path">{{ item?.label }}</router-link>
+    <el-menu-item v-else :index="item.path">
+      <!-- <router-link class="routerClass" :to="item?.path">{{ item?.label }}</router-link> -->
       <template #title>
         <svg-icon iconClass="talentPool" class="icon_color"></svg-icon>
-        <!-- <img class="icon_img" v-if="item?.icon" :src="require(`@/assets/static/image/${item.icon}${selectedKey == item.id ? '_select' : ''}.png`)" alt=""> -->
         <span>{{ item?.label }}</span>
       </template>
     </el-menu-item>
@@ -33,7 +30,6 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'MenuItem',
-  // props: ['menuList'],
 })
 
 </script>
@@ -46,15 +42,15 @@ interface MenuItem {
   icon: string;
   path: string;
 }
-const props = defineProps({
+defineProps({
   menuList: {
     type: Array as () => MenuItem[],
     default: () => []
   },
-  selectedKey: {
-    type: String,
-    default: ''
-  }
+  // selectedKey: {
+  //   type: String,
+  //   default: ''
+  // }
 });
 </script>
 
