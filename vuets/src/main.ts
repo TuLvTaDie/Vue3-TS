@@ -1,3 +1,4 @@
+import '@/assets/tailwind.css'
 import { createApp } from 'vue'
 import router from './router'
 import ElementPlus from 'element-plus'
