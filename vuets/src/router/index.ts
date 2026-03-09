@@ -2,13 +2,12 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
 const routes: Array<RouteRecordRaw> = [
-  // {
-  //   path: '/',
-  //   name: 'home',
-  //   component: HomeView
-  // },
   {
     path: '/',
+    redirect: '/talentPool',
+  },
+  {
+    path: '/talentPool',
     name: 'talentPool',
     component: () => import('@/views/talentPool/talentPool_index.vue')
   },

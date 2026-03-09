@@ -6,6 +6,7 @@
   <!-- <router-view/> -->
   <div id="app">
     <div class="header"></div>
+    <div style="width: 100%; height: 56px;"></div>
     <div class="body">
       <div class="leftTabs">
         <leftTabs :data="menuList"/>
@@ -36,27 +37,27 @@ export default defineComponent({
         name: '平台人才库',
         label: '平台人才库',
         icon: 'talentPool_icon',
-        url: '/talentPool',
+        url: '/',
         router: '',
-        // children: [{
-        //   id: '1-1',
-        //   path: '/',
-        //   name: '分析页',
-        //   label: '分析页',
-        //   url: '/page2',
-        // },{
-        //   id: '1-2',
-        //   path: '/about',
-        //   name: '监控页',
-        //   label: '监控页',
-        //   url: '/page2',
-        // },{
-        //   id: '1-3',
-        //   path: '/test',
-        //   name: '工作台',
-        //   label: '工作台',
-        //   url: '/page2',
-        // },],
+        children: [{
+          id: '1-1',
+          path: '/talentPool',
+          name: '分析页',
+          label: '分析页',
+          url: '/page2',
+        },{
+          id: '1-2',
+          path: '/about',
+          name: '监控页',
+          label: '监控页',
+          url: '/page2',
+        },{
+          id: '1-3',
+          path: '/test',
+          name: '工作台',
+          label: '工作台',
+          url: '/page2',
+        },],
       },
       {
         id: '2',
@@ -157,25 +158,40 @@ body {
   height: 100vh;
   .header {
     width: 100%;
-    height: 80px;
+    height: 56px;
     height: 4rem;
-    background-color: #333;
+    // 透明模糊背景
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    // 下边框
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    // 固定在顶部
+    position: fixed;
+    top: 0; 
+    z-index: 1000;
   }
 
   .body {
-    width: 100%;
-    height: calc(100% - 80px);
-    height: calc(100% - 4rem);
+    // width: 100%;
+    background-color: #f0f2f5;
+    height: calc(100% - 56px);
+    overflow-y: auto;
+    // height: calc(100% - 4rem);
     display: flex;
     .leftTabs {
-      width: 10%;
+      position: fixed;
+      top: 56px;
+      width: 257px;
       height: 100%;
+      // padding: 0 8px;
       background-color: #ffffff;
     }
     .pageBody {
-      width: 90%;
-      height: 100%;
-      background-color: #f0f2f5;
+      width: calc(100% - 257px);
+      // background-color: #f0f2f5;
+      position: relative;
+      top: 8px;
+      margin-left: 257px;
     }
   }
 }
